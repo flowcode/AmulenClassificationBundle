@@ -1,39 +1,49 @@
 {% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
 {% block body %}
-<ol class="breadcrumb">
-    <li><a href="{{ url('admin_dashboard') }}">{{ 'home'|trans }}</a></li>
-    <li>{{ 'classification dashboard'|trans }}</li>
-</ol>
+    <section class="content-header">
+        <h1>
+            {{ 'classification'|trans|title }}
+            <small>Dashboard</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="{{ url('admin_dashboard') }}">
+                    <i class="fa fa-dashboard"></i>
+                    {{ 'home'|trans }}
+                </a>
+            </li>
+            <li class="active">{{ 'classification dashboard'|trans }}</li>
+        </ol>
+    </section>
 
-<div class="page-header">
-    <h1>{{ 'classification'|trans|title }}</h1>
-</div>
 
-<div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <section class="content">
+
         <div class="row">
-            <div class="col-sm-4 tile">
-                <a class="btn btn-primary btn-block" href="{{ url('admin_category') }}">
-                    <div><i class="fa fa-list-alt"></i></div>
-                    {{ 'categorys'|trans }}
-                </a>
-            </div>
-            <div class="col-sm-4 tile">
-                <a class="btn btn-primary btn-block" href="{{ url('admin_collection') }}">
-                    <div><i class="fa fa-list"></i></div>
-                    {{ 'collections'|trans }}
-                </a>
-            </div>
-            <div class="col-sm-4 tile">
-                <a class="btn btn-primary btn-block" href="{{ url('admin_tag') }}">
-                    <div><i class="fa fa-tags"></i></div>
-                    {{ 'tags'|trans }}
-                </a>
-            </div>
+            <div class="col-sm-8 col-sm-offset-2">
+                <div class="row">
+                    <div class="col-sm-4 tile">
+                        <a class="btn btn-primary btn-block" href="{{ url('admin_category') }}">
+                            <div><i class="fa fa-list-alt"></i></div>
+                                {{ 'categorys'|trans }}
+                        </a>
+                    </div>
+                    <div class="col-sm-4 tile">
+                        <a class="btn btn-primary btn-block" href="{{ url('admin_collection') }}">
+                            <div><i class="fa fa-list"></i></div>
+                                {{ 'collections'|trans }}
+                        </a>
+                    </div>
+                    <div class="col-sm-4 tile">
+                        <a class="btn btn-primary btn-block" href="{{ url('admin_tag') }}">
+                            <div><i class="fa fa-tags"></i></div>
+                                {{ 'tags'|trans }}
+                        </a>
+                    </div>
 
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-
+    </section>
 {% endblock %}
