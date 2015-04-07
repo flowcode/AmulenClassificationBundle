@@ -1,15 +1,32 @@
 {% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
 {% block body -%}
-    <h1>Tag creation</h1>
-
-    {{ form(form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_tag') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            {{ 'tags.create.title'|trans }}
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('admin_dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="{{ path('admin_tag') }}"><i class="fa fa-dashboard"></i> Tags</a></li>
+            <li class="active">Create</li>
+        </ol>
+    </section>
+    <section class="content">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Create</h3>
+                <div class="box-tools">
+                    <ul class="list-inline">
+                        <a href="{{ path('admin_tag') }}" class="btn btn-default btn-sm">
+                            <i class="fa fa-arrow-left"></i> Volver
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="box-body">
+                {{ form(form) }}
+            </div>
+        </div>
+    </section>
 {% endblock %}

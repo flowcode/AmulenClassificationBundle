@@ -61,6 +61,11 @@ class Tag {
      */
     private $enabled;
 
+    
+    function __construct() {
+        $this->enabled = true;
+    }
+
     /**
      * Get id
      *
