@@ -53,7 +53,11 @@ class TagController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_tag_show', array('id' => $entity->getId())));
+            $nextAction = $form->get('saveAndAdd')->isClicked()
+                ? 'admin_tag_new'
+                : 'admin_tag';
+
+            return $this->redirectToRoute($nextAction);
         }
 
         return array(
@@ -76,8 +80,10 @@ class TagController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
-
+        $form
+            ->add('submit', 'submit', array('label' => 'Save'))
+            ->add('saveAndAdd', 'submit', array('label' => 'Save and Add'))
+        ;
         return $form;
     }
 
