@@ -25,7 +25,7 @@ class CategoryType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'Flowcode\ClassificationBundle\Entity\Category'
+            'data_class' => 'Amulen\ClassificationBundle\Entity\Category'
         ));
     }
 
@@ -33,7 +33,7 @@ class CategoryType extends AbstractType {
      * @return string
      */
     public function getName() {
-        return 'flowcode_classificationbundle_category';
+        return 'amulen_classificationbundle_category';
     }
 
 }

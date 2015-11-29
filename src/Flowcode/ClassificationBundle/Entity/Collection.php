@@ -10,7 +10,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
  * Collection
  *
  * @ORM\Table(name="classification_collection")
- * @ORM\Entity(repositoryClass="CollectionRepository")
+ * @ORM\Entity(repositoryClass="Amulen\ClassificationBundle\Repository\CollectionRepository")
  */
 class Collection {
 
@@ -71,7 +71,7 @@ class Collection {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -92,7 +92,7 @@ class Collection {
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName() {
         return $this->name;
@@ -113,7 +113,7 @@ class Collection {
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug() {
         return $this->slug;
@@ -134,7 +134,7 @@ class Collection {
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription() {
         return $this->description;
@@ -155,7 +155,7 @@ class Collection {
     /**
      * Get created
      *
-     * @return DateTime 
+     * @return DateTime
      */
     public function getCreated() {
         return $this->created;
@@ -176,7 +176,7 @@ class Collection {
     /**
      * Get updated
      *
-     * @return DateTime 
+     * @return DateTime
      */
     public function getUpdated() {
         return $this->updated;
@@ -197,12 +197,12 @@ class Collection {
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled() {
         return $this->enabled;
     }
-    
+
     public function __toString() {
         return $this->name;
     }

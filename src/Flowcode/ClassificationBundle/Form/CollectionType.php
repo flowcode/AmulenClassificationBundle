@@ -23,14 +23,14 @@ class CollectionType extends AbstractType
             ->add('enabled')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Flowcode\ClassificationBundle\Entity\Collection'
+            'data_class' => 'Amulen\ClassificationBundle\Entity\Collection'
         ));
     }
 
@@ -39,6 +39,6 @@ class CollectionType extends AbstractType
      */
     public function getName()
     {
-        return 'flowcode_classificationbundle_collection';
+        return 'amulen_classificationbundle_collection';
     }
 }

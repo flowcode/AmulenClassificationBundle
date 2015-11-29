@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class TagType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -19,14 +19,14 @@ class TagType extends AbstractType
             ->add('enabled')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Flowcode\ClassificationBundle\Entity\Tag'
+            'data_class' => 'Amulen\ClassificationBundle\Entity\Tag'
         ));
     }
 
@@ -35,6 +35,6 @@ class TagType extends AbstractType
      */
     public function getName()
     {
-        return 'flowcode_classificationbundle_tag';
+        return 'amulen_classificationbundle_tag';
     }
 }

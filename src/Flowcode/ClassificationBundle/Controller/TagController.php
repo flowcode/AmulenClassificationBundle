@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Flowcode\ClassificationBundle\Entity\Tag;
+use Amulen\ClassificationBundle\Entity\Tag;
 use Flowcode\ClassificationBundle\Form\TagType;
 
 /**
@@ -29,7 +29,7 @@ class TagController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FlowcodeClassificationBundle:Tag')->findAll();
+        $entities = $em->getRepository('AmulenClassificationBundle:Tag')->findAll();
 
         return array(
             'entities' => $entities,
@@ -40,7 +40,7 @@ class TagController extends Controller
      *
      * @Route("/", name="admin_tag_create")
      * @Method("POST")
-     * @Template("FlowcodeClassificationBundle:Tag:new.html.twig")
+     * @Template("AmulenClassificationBundle:Tag:new.html.twig")
      */
     public function createAction(Request $request)
     {
@@ -116,7 +116,7 @@ class TagController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Tag')->find($id);
+        $entity = $em->getRepository('AmulenClassificationBundle:Tag')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tag entity.');
@@ -141,7 +141,7 @@ class TagController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Tag')->find($id);
+        $entity = $em->getRepository('AmulenClassificationBundle:Tag')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tag entity.');
@@ -180,13 +180,13 @@ class TagController extends Controller
      *
      * @Route("/{id}", name="admin_tag_update")
      * @Method("PUT")
-     * @Template("FlowcodeClassificationBundle:Tag:edit.html.twig")
+     * @Template("AmulenClassificationBundle:Tag:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Tag')->find($id);
+        $entity = $em->getRepository('AmulenClassificationBundle:Tag')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Tag entity.');
@@ -221,7 +221,7 @@ class TagController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FlowcodeClassificationBundle:Tag')->find($id);
+            $entity = $em->getRepository('AmulenClassificationBundle:Tag')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Tag entity.');

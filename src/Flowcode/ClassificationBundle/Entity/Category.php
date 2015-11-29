@@ -7,10 +7,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Category
- *
- * @Gedmo\Tree(type="nested")
- * @ORM\Table(name="classification_category")
- * @ORM\Entity(repositoryClass="Gedmo\Tree\Entity\Repository\NestedTreeRepository")
  */
 class Category {
 
@@ -21,23 +17,23 @@ class Category {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      *
-     * 
+     *
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var integer
@@ -45,7 +41,7 @@ class Category {
      * @Gedmo\TreeLeft
      * @ORM\Column(name="lft", type="integer")
      */
-    private $lft;
+    protected $lft;
 
     /**
      * @var integer
@@ -53,7 +49,7 @@ class Category {
      * @Gedmo\TreeRight
      * @ORM\Column(name="rgt", type="integer")
      */
-    private $rgt;
+    protected $rgt;
 
     /**
      * @var integer
@@ -61,31 +57,31 @@ class Category {
      * @Gedmo\TreeLevel
      * @ORM\Column(name="lvl", type="integer")
      */
-    private $lvl;
+    protected $lvl;
 
     /**
      * @Gedmo\TreeRoot
      * @ORM\Column(name="root", type="integer", nullable=true)
      */
-    private $root;
+    protected $root;
 
     /**
      * @Gedmo\TreeParent
-     * @ORM\ManyToOne(targetEntity="Category", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="\Amulen\ClassificationBundle\Entity\Category", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $parent;
+    protected $parent;
 
     /**
-     * @ORM\OneToMany(targetEntity="Category", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="\Amulen\ClassificationBundle\Entity\Category", mappedBy="parent")
      * @ORM\OrderBy({"lft" = "ASC"})
      */
-    private $children;
+    protected $children;
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -106,7 +102,7 @@ class Category {
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName() {
         return $this->name;
@@ -127,7 +123,7 @@ class Category {
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug() {
         return $this->slug;
@@ -148,7 +144,7 @@ class Category {
     /**
      * Get lft
      *
-     * @return integer 
+     * @return integer
      */
     public function getLft() {
         return $this->lft;
@@ -169,7 +165,7 @@ class Category {
     /**
      * Get rgt
      *
-     * @return integer 
+     * @return integer
      */
     public function getRgt() {
         return $this->rgt;
@@ -190,7 +186,7 @@ class Category {
     /**
      * Get lvl
      *
-     * @return integer 
+     * @return integer
      */
     public function getLvl() {
         return $this->lvl;
@@ -218,7 +214,7 @@ class Category {
     /**
      * Get root
      *
-     * @return integer 
+     * @return integer
      */
     public function getRoot() {
         return $this->root;
@@ -227,10 +223,10 @@ class Category {
     /**
      * Set parent
      *
-     * @param \Flowcode\ClassificationBundle\Entity\Category $parent
+     * @param \Amulen\ClassificationBundle\Entity\Category $parent
      * @return Category
      */
-    public function setParent(\Flowcode\ClassificationBundle\Entity\Category $parent = null) {
+    public function setParent(\Amulen\ClassificationBundle\Entity\Category $parent = null) {
         $this->parent = $parent;
 
         return $this;
@@ -239,7 +235,7 @@ class Category {
     /**
      * Get parent
      *
-     * @return \Flowcode\ClassificationBundle\Entity\Category 
+     * @return \Amulen\ClassificationBundle\Entity\Category
      */
     public function getParent() {
         return $this->parent;
@@ -248,10 +244,10 @@ class Category {
     /**
      * Add children
      *
-     * @param \Flowcode\ClassificationBundle\Entity\Category $children
+     * @param \Amulen\ClassificationBundle\Entity\Category $children
      * @return Category
      */
-    public function addChild(\Flowcode\ClassificationBundle\Entity\Category $children) {
+    public function addChild(\Amulen\ClassificationBundle\Entity\Category $children) {
         $this->children[] = $children;
 
         return $this;
@@ -260,21 +256,21 @@ class Category {
     /**
      * Remove children
      *
-     * @param \Flowcode\ClassificationBundle\Entity\Category $children
+     * @param \Amulen\ClassificationBundle\Entity\Category $children
      */
-    public function removeChild(\Flowcode\ClassificationBundle\Entity\Category $children) {
+    public function removeChild(\Amulen\ClassificationBundle\Entity\Category $children) {
         $this->children->removeElement($children);
     }
 
     /**
      * Get children
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getChildren() {
         return $this->children;
     }
-    
+
     public function __toString() {
         return $this->name;
     }

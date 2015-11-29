@@ -8,9 +8,6 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Tag
- *
- * @ORM\Table(name="classification_tag")
- * @ORM\Entity(repositoryClass="TagRepository")
  */
 class Tag {
 
@@ -21,14 +18,14 @@ class Tag {
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255)
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
@@ -36,7 +33,7 @@ class Tag {
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(name="slug", type="string", length=255)
      */
-    private $slug;
+    protected $slug;
 
     /**
      * @var DateTime
@@ -44,7 +41,7 @@ class Tag {
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(name="created", type="datetime")
      */
-    private $created;
+    protected $created;
 
     /**
      * @var DateTime
@@ -52,16 +49,16 @@ class Tag {
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(name="updated", type="datetime")
      */
-    private $updated;
+    protected $updated;
 
     /**
      * @var boolean
      *
      * @ORM\Column(name="enabled", type="boolean")
      */
-    private $enabled;
+    protected $enabled;
 
-    
+
     function __construct() {
         $this->enabled = true;
     }
@@ -69,7 +66,7 @@ class Tag {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId() {
         return $this->id;
@@ -90,7 +87,7 @@ class Tag {
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName() {
         return $this->name;
@@ -111,7 +108,7 @@ class Tag {
     /**
      * Get slug
      *
-     * @return string 
+     * @return string
      */
     public function getSlug() {
         return $this->slug;
@@ -132,7 +129,7 @@ class Tag {
     /**
      * Get created
      *
-     * @return DateTime 
+     * @return DateTime
      */
     public function getCreated() {
         return $this->created;
@@ -153,7 +150,7 @@ class Tag {
     /**
      * Get updated
      *
-     * @return DateTime 
+     * @return DateTime
      */
     public function getUpdated() {
         return $this->updated;
@@ -174,7 +171,7 @@ class Tag {
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled() {
         return $this->enabled;

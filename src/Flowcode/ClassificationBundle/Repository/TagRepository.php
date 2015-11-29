@@ -1,6 +1,6 @@
 <?php
 
-namespace Flowcode\ClassificationBundle\Entity;
+namespace Flowcode\ClassificationBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

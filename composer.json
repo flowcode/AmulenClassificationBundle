@@ -24,7 +24,6 @@
         "sensio/distribution-bundle": "~4.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "lunetics/locale-bundle": "2.2.*",
         "symfony-cmf/seo-bundle": "1.0.*@dev",
         "knplabs/knp-paginator-bundle": "~2.4",
         "components/jquery": "1.11.1",

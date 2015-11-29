@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Flowcode\ClassificationBundle\Entity\Category;
+use Amulen\ClassificationBundle\Entity\Category;
 use Flowcode\ClassificationBundle\Form\CategoryType;
 
 /**
@@ -27,7 +27,7 @@ class CategoryController extends Controller {
     public function indexAction() {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FlowcodeClassificationBundle:Category')->findAll();
+        $entities = $em->getRepository('AmulenClassificationBundle:Category')->findAll();
 
         return array(
             'entities' => $entities,
@@ -39,7 +39,7 @@ class CategoryController extends Controller {
      *
      * @Route("/", name="admin_category_create")
      * @Method("POST")
-     * @Template("FlowcodeClassificationBundle:Category:new.html.twig")
+     * @Template("AmulenClassificationBundle:Category:new.html.twig")
      */
     public function createAction(Request $request) {
         $entity = new Category();
@@ -105,7 +105,7 @@ class CategoryController extends Controller {
     public function showAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Category')->find($id);
+        $entity = $em->getRepository('AmulenClassificationBundle:Category')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Category entity.');
@@ -129,7 +129,7 @@ class CategoryController extends Controller {
     public function editAction($id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Category')->find($id);
+        $entity = $em->getRepository('AmulenClassificationBundle:Category')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Category entity.');
@@ -168,12 +168,12 @@ class CategoryController extends Controller {
      *
      * @Route("/{id}", name="admin_category_update")
      * @Method("PUT")
-     * @Template("FlowcodeClassificationBundle:Category:edit.html.twig")
+     * @Template("AmulenClassificationBundle:Category:edit.html.twig")
      */
     public function updateAction(Request $request, $id) {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Category')->find($id);
+        $entity = $em->getRepository('AmulenClassificationBundle:Category')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Category entity.');
@@ -208,7 +208,7 @@ class CategoryController extends Controller {
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FlowcodeClassificationBundle:Category')->find($id);
+            $entity = $em->getRepository('AmulenClassificationBundle:Category')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Category entity.');
