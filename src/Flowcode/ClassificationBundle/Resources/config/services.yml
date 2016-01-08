@@ -1,0 +1,11 @@
+services:
+
+    amulen.classification.form.category:
+        class: Flowcode\ClassificationBundle\Form\CategoryType
+        tags:
+            - { name: form.type, alias: amulen_classificationbundle_category }
+
+    amulen.classification.form.tag:
+        class: Flowcode\ClassificationBundle\Form\TagType
+        tags:
+            - { name: form.type, alias: amulen_classificationbundle_tag }

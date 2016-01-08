@@ -8,7 +8,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Amulen\ClassificationBundle\Entity\Tag;
-use Flowcode\ClassificationBundle\Form\TagType;
 
 /**
  * Tag controller.
@@ -75,7 +74,7 @@ class TagController extends Controller
     */
     private function createCreateForm(Tag $entity)
     {
-        $form = $this->createForm(new TagType(), $entity, array(
+        $form = $this->createForm($this->get("amulen.classification.form.tag"), $entity, array(
             'action' => $this->generateUrl('admin_tag_create'),
             'method' => 'POST',
         ));
@@ -166,7 +165,7 @@ class TagController extends Controller
     */
     private function createEditForm(Tag $entity)
     {
-        $form = $this->createForm(new TagType(), $entity, array(
+        $form = $this->createForm($this->get("amulen.classification.form.tag"), $entity, array(
             'action' => $this->generateUrl('admin_tag_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));

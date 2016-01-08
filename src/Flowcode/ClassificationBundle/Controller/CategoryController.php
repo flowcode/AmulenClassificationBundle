@@ -8,15 +8,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Amulen\ClassificationBundle\Entity\Category;
-use Flowcode\ClassificationBundle\Form\CategoryType;
 
 /**
  * Category controller.
  *
  * @Route("/admin/category")
  */
-class CategoryController extends Controller {
-
+class CategoryController extends Controller
+{
     /**
      * Lists all Category entities.
      *
@@ -24,7 +23,8 @@ class CategoryController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function indexAction() {
+    public function indexAction()
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('AmulenClassificationBundle:Category')->findAll();
@@ -41,7 +41,8 @@ class CategoryController extends Controller {
      * @Method("POST")
      * @Template("AmulenClassificationBundle:Category:new.html.twig")
      */
-    public function createAction(Request $request) {
+    public function createAction(Request $request)
+    {
         $entity = new Category();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -67,8 +68,9 @@ class CategoryController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Category $entity) {
-        $form = $this->createForm(new CategoryType(), $entity, array(
+    private function createCreateForm(Category $entity)
+    {
+        $form = $this->createForm($this->get("amulen.classification.form.category"), $entity, array(
             'action' => $this->generateUrl('admin_category_create'),
             'method' => 'POST',
         ));
@@ -85,7 +87,8 @@ class CategoryController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function newAction() {
+    public function newAction()
+    {
         $entity = new Category();
         $form = $this->createCreateForm($entity);
 
@@ -102,7 +105,8 @@ class CategoryController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function showAction($id) {
+    public function showAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('AmulenClassificationBundle:Category')->find($id);
@@ -126,7 +130,8 @@ class CategoryController extends Controller {
      * @Method("GET")
      * @Template()
      */
-    public function editAction($id) {
+    public function editAction($id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('AmulenClassificationBundle:Category')->find($id);
@@ -152,8 +157,9 @@ class CategoryController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createEditForm(Category $entity) {
-        $form = $this->createForm(new CategoryType(), $entity, array(
+    private function createEditForm(Category $entity)
+    {
+        $form = $this->createForm($this->get("amulen.classification.form.category"), $entity, array(
             'action' => $this->generateUrl('admin_category_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -170,7 +176,8 @@ class CategoryController extends Controller {
      * @Method("PUT")
      * @Template("AmulenClassificationBundle:Category:edit.html.twig")
      */
-    public function updateAction(Request $request, $id) {
+    public function updateAction(Request $request, $id)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('AmulenClassificationBundle:Category')->find($id);
@@ -202,7 +209,8 @@ class CategoryController extends Controller {
      * @Route("/{id}", name="admin_category_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id) {
+    public function deleteAction(Request $request, $id)
+    {
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -228,7 +236,8 @@ class CategoryController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createDeleteForm($id) {
+    private function createDeleteForm($id)
+    {
         return $this->createFormBuilder()
                         ->setAction($this->generateUrl('admin_category_delete', array('id' => $id)))
                         ->setMethod('DELETE')
@@ -236,5 +245,4 @@ class CategoryController extends Controller {
                         ->getForm()
         ;
     }
-
 }
