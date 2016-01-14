@@ -16,7 +16,14 @@ class CategoryType extends AbstractType {
         $builder
                 ->add('name')
                 ->add('slug', null, array('read_only' => true))
-                ->add('parent')
+                ->add('parent', 'y_tree', array(
+                   'class' => "Amulen\ClassificationBundle\Entity\Category",
+                   'orderFields' => array('root' => 'asc','lft' => 'asc'),
+                   'prefixAttributeName' => 'data-level-prefix',
+                   'treeLevelField' => 'lvl',
+                   'required' => false,
+                   'multiple' => false,
+                   'attr' => array("class" => "tall")))
         ;
     }
 
