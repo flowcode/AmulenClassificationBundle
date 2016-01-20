@@ -12,4 +12,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class TagRepository extends EntityRepository
 {
+    public function getWithWeight(){
+        $qb = $this->createQueryBuilder("t");
+        $qb->select("t.name, COUNT(t) as weight");
+        $qb->join("AmulenNewsBundle:Post", "p", "WITH", "1=1");
+        $qb->join("p.tags", "t2");
+        $qb->where("t2.id = t.id");
+        $qb->groupBy("t.name");
+
+        return $qb->getQuery()->getResult();
+    }
 }

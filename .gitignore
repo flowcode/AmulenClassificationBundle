@@ -33,3 +33,6 @@
 # Composer PHAR
 /composer.phar
 /nbproject/private/
+
+# Ignore Mac DS_Store files
+.DS_Store
