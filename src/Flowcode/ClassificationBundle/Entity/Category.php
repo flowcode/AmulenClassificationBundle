@@ -79,6 +79,13 @@ class Category {
     protected $children;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=true)
+     */
+    protected $image;
+
+    /**
      * Get id
      *
      * @return integer
@@ -275,5 +282,25 @@ class Category {
         return $this->name;
     }
 
+    /**
+     * Set image
+     *
+     * @param string $image
+     * @return Category
+     */
+    public function setImage($image) {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage() {
+        return $this->image;
+    }
 
 }

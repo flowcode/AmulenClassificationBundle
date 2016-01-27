@@ -24,6 +24,7 @@ class CategoryType extends AbstractType {
                    'required' => false,
                    'multiple' => false,
                    'attr' => array("class" => "tall")))
+                ->add('image')
         ;
     }
 
