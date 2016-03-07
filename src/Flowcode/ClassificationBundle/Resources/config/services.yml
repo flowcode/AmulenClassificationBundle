@@ -9,3 +9,8 @@ services:
         class: Flowcode\ClassificationBundle\Form\TagType
         tags:
             - { name: form.type, alias: amulen_classificationbundle_tag }
+
+    amulen.classification.category:
+        class: Flowcode\ClassificationBundle\Service\CategoryService
+        arguments: ["@service_container"]
+        
