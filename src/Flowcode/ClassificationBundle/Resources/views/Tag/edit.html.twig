@@ -1,16 +1,23 @@
 {% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
 {% block body -%}
-    <h1>Tag edit</h1>
-
-    {{ form(edit_form) }}
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_tag') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{{ include('FlowcodeClassificationBundle:Tag:tagHeader.html.twig') }}
+<section class="content">
+    <div class="col-sm-6">
+        <div class="box box-solid">
+            <div class="box-header">
+                <h3>{{ "edit page"|trans|title }}</h3>
+                <div class="box-tools">
+                    <a href="{{ path('admin_tag_show', { 'id': entity.id }) }}">
+                        {{ "Back"|trans }}
+                    </a>
+                </div>
+            </div>
+            <div class="box-body">
+                {{ form(edit_form) }}
+                {{ form(delete_form) }}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

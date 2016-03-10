@@ -1,43 +1,30 @@
 {% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
 {% block body -%}
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-        <h1>
-            {{ 'tags.list.title'|trans }}
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{ path('admin_dashboard') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Tags</li>
-        </ol>
-    </section>
-
-    <section class="content">
-        <div class="box">
+{{ include('FlowcodeClassificationBundle:Tag:tagHeader.html.twig') }}
+<section class="content">
+    <div class="col-sm-6">
+        <div class="box box-solid">
             <div class="box-header">
-                <h3 class="box-title">All tags</h3>
+                <h3>{{ "tag list"|trans|title }}</h3>
                 <div class="box-tools">
-                    <ul class="list-inline">
-                        <a href="{{ path('admin_tag_new') }}" class="btn btn-default btn-sm">
-                            <i class="fa fa-plus"></i> New Tag
-                        </a>
-                    </ul>
+                    <a href="{{ path('admin_tag_new') }}" class="btn btn-link btn-sm">
+                        <i class="fa fa-plus"></i> {{ "new"|trans|title }}
+                    </a>
                 </div>
             </div>
             <div class="box-body">
                 <table class="records_list table table-condensed">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Slug</th>
-                            <th>Enabled</th>
+                            <th>{{ "Name"|trans|title }}</th>
+                            <th>{{ "Enabled"|trans|title }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for entity in entities %}
                             <tr>
                                 <td><a href="{{ path('admin_tag_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
-                                <td>{{ entity.slug }}</td>
                                 <td>{{ entity.enabled }}</td>
                             </tr>
                         {% endfor %}
@@ -45,5 +32,6 @@
                 </table>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 {% endblock %}
