@@ -13,4 +13,10 @@ services:
     amulen.classification.category:
         class: Flowcode\ClassificationBundle\Service\CategoryService
         arguments: ["@service_container"]
+
+    amulen.classification.showmenu_eventsubscriber:
+        class: Flowcode\ClassificationBundle\Event\ShowMenuSubscriber
+        arguments: ['@router', '@translator']
+        tags:
+            - { name: kernel.event_subscriber }
         
