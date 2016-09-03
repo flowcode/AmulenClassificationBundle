@@ -13,7 +13,17 @@ class CategoryService{
 	{
 		$this->container = $container;
 	}
+	public function findByRootFirstLevelItems($root = null)
+	{
+		$repo = $this->container->get('doctrine.orm.entity_manager')
+				->getRepository('AmulenClassificationBundle:Category');
 
+		$root = $repo->findBy(array("name" => $root));
+		if(count($root) > 0){
+			return $root[0]->getChildren();
+		}
+		return array();
+	}
 	public function findByRoot($root = null)
 	{
 		$repo = $this->container->get('doctrine.orm.entity_manager')
