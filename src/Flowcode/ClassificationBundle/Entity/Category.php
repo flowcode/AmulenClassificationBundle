@@ -8,7 +8,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Category
  */
-class Category {
+class Category
+{
 
     /**
      * @var integer
@@ -74,7 +75,7 @@ class Category {
 
     /**
      * @ORM\OneToMany(targetEntity="\Amulen\ClassificationBundle\Entity\Category", mappedBy="parent")
-     * @ORM\OrderBy({"lft" = "ASC"})
+     * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $children;
 
@@ -86,11 +87,18 @@ class Category {
     protected $image;
 
     /**
+     * @var integer
+     * @ORM\Column(name="position", type="integer")
+     */
+    protected $position;
+
+    /**
      * Get id
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -100,7 +108,8 @@ class Category {
      * @param string $name
      * @return Category
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -111,7 +120,8 @@ class Category {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -121,7 +131,8 @@ class Category {
      * @param string $slug
      * @return Category
      */
-    public function setSlug($slug) {
+    public function setSlug($slug)
+    {
         $this->slug = $slug;
 
         return $this;
@@ -132,7 +143,8 @@ class Category {
      *
      * @return string
      */
-    public function getSlug() {
+    public function getSlug()
+    {
         return $this->slug;
     }
 
@@ -142,7 +154,8 @@ class Category {
      * @param integer $lft
      * @return Category
      */
-    public function setLft($lft) {
+    public function setLft($lft)
+    {
         $this->lft = $lft;
 
         return $this;
@@ -153,7 +166,8 @@ class Category {
      *
      * @return integer
      */
-    public function getLft() {
+    public function getLft()
+    {
         return $this->lft;
     }
 
@@ -163,7 +177,8 @@ class Category {
      * @param integer $rgt
      * @return Category
      */
-    public function setRgt($rgt) {
+    public function setRgt($rgt)
+    {
         $this->rgt = $rgt;
 
         return $this;
@@ -174,7 +189,8 @@ class Category {
      *
      * @return integer
      */
-    public function getRgt() {
+    public function getRgt()
+    {
         return $this->rgt;
     }
 
@@ -184,7 +200,8 @@ class Category {
      * @param integer $lvl
      * @return Category
      */
-    public function setLvl($lvl) {
+    public function setLvl($lvl)
+    {
         $this->lvl = $lvl;
 
         return $this;
@@ -195,14 +212,16 @@ class Category {
      *
      * @return integer
      */
-    public function getLvl() {
+    public function getLvl()
+    {
         return $this->lvl;
     }
 
     /**
      * Constructor
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->children = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -212,7 +231,8 @@ class Category {
      * @param integer $root
      * @return Category
      */
-    public function setRoot($root) {
+    public function setRoot($root)
+    {
         $this->root = $root;
 
         return $this;
@@ -223,7 +243,8 @@ class Category {
      *
      * @return integer
      */
-    public function getRoot() {
+    public function getRoot()
+    {
         return $this->root;
     }
 
@@ -233,7 +254,8 @@ class Category {
      * @param \Amulen\ClassificationBundle\Entity\Category $parent
      * @return Category
      */
-    public function setParent(\Amulen\ClassificationBundle\Entity\Category $parent = null) {
+    public function setParent(\Amulen\ClassificationBundle\Entity\Category $parent = null)
+    {
         $this->parent = $parent;
 
         return $this;
@@ -244,7 +266,8 @@ class Category {
      *
      * @return \Amulen\ClassificationBundle\Entity\Category
      */
-    public function getParent() {
+    public function getParent()
+    {
         return $this->parent;
     }
 
@@ -254,7 +277,8 @@ class Category {
      * @param \Amulen\ClassificationBundle\Entity\Category $children
      * @return Category
      */
-    public function addChild(\Amulen\ClassificationBundle\Entity\Category $children) {
+    public function addChild(\Amulen\ClassificationBundle\Entity\Category $children)
+    {
         $this->children[] = $children;
 
         return $this;
@@ -265,7 +289,8 @@ class Category {
      *
      * @param \Amulen\ClassificationBundle\Entity\Category $children
      */
-    public function removeChild(\Amulen\ClassificationBundle\Entity\Category $children) {
+    public function removeChild(\Amulen\ClassificationBundle\Entity\Category $children)
+    {
         $this->children->removeElement($children);
     }
 
@@ -274,11 +299,13 @@ class Category {
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getChildren() {
+    public function getChildren()
+    {
         return $this->children;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name;
     }
 
@@ -288,7 +315,8 @@ class Category {
      * @param string $image
      * @return Category
      */
-    public function setImage($image) {
+    public function setImage($image)
+    {
         $this->image = $image;
 
         return $this;
@@ -299,8 +327,32 @@ class Category {
      *
      * @return string
      */
-    public function getImage() {
+    public function getImage()
+    {
         return $this->image;
     }
 
+    /**
+     * Set position
+     *
+     * @param integer $position
+     *
+     * @return Category
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+
+        return $this;
+    }
+
+    /**
+     * Get position
+     *
+     * @return integer
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
 }
