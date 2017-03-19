@@ -9,7 +9,8 @@ use Gedmo\Mapping\Annotation as Gedmo;
 /**
  * Collection
  */
-class Collection {
+class Collection
+{
 
     /**
      * @var integer
@@ -66,11 +67,21 @@ class Collection {
     protected $enabled;
 
     /**
+     * Collection constructor.
+     */
+    public function __construct()
+    {
+        $this->enabled = true;
+    }
+
+
+    /**
      * Get id
      *
      * @return integer
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
@@ -80,7 +91,8 @@ class Collection {
      * @param string $name
      * @return Collection
      */
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
 
         return $this;
@@ -91,7 +103,8 @@ class Collection {
      *
      * @return string
      */
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
@@ -101,7 +114,8 @@ class Collection {
      * @param string $slug
      * @return Collection
      */
-    public function setSlug($slug) {
+    public function setSlug($slug)
+    {
         $this->slug = $slug;
 
         return $this;
@@ -112,7 +126,8 @@ class Collection {
      *
      * @return string
      */
-    public function getSlug() {
+    public function getSlug()
+    {
         return $this->slug;
     }
 
@@ -122,7 +137,8 @@ class Collection {
      * @param string $description
      * @return Collection
      */
-    public function setDescription($description) {
+    public function setDescription($description)
+    {
         $this->description = $description;
 
         return $this;
@@ -133,7 +149,8 @@ class Collection {
      *
      * @return string
      */
-    public function getDescription() {
+    public function getDescription()
+    {
         return $this->description;
     }
 
@@ -143,7 +160,8 @@ class Collection {
      * @param DateTime $created
      * @return Collection
      */
-    public function setCreated($created) {
+    public function setCreated($created)
+    {
         $this->created = $created;
 
         return $this;
@@ -154,7 +172,8 @@ class Collection {
      *
      * @return DateTime
      */
-    public function getCreated() {
+    public function getCreated()
+    {
         return $this->created;
     }
 
@@ -164,7 +183,8 @@ class Collection {
      * @param DateTime $updated
      * @return Collection
      */
-    public function setUpdated($updated) {
+    public function setUpdated($updated)
+    {
         $this->updated = $updated;
 
         return $this;
@@ -175,7 +195,8 @@ class Collection {
      *
      * @return DateTime
      */
-    public function getUpdated() {
+    public function getUpdated()
+    {
         return $this->updated;
     }
 
@@ -185,7 +206,8 @@ class Collection {
      * @param boolean $enabled
      * @return Collection
      */
-    public function setEnabled($enabled) {
+    public function setEnabled($enabled)
+    {
         $this->enabled = $enabled;
 
         return $this;
@@ -196,11 +218,13 @@ class Collection {
      *
      * @return boolean
      */
-    public function getEnabled() {
+    public function getEnabled()
+    {
         return $this->enabled;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->name;
     }
 

@@ -1,60 +1,61 @@
 {% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
 {% block body -%}
-{{ include('FlowcodeClassificationBundle:Category:categoryHeader.html.twig') }}
-<section class="content">
+    {{ include('FlowcodeClassificationBundle:Category:categoryHeader.html.twig') }}
+    <section class="content">
 
-    <div class="box box-solid">
-        <div class="box-header">
-            <h3>{{ "product list"|trans|title }}</h3>
-            <div class="box-tools">
-                <a href="{{ path('admin_category_new') }}" class="btn btn-link btn-sm">
-                    <i class="fa fa-plus"></i> {{ "new"|trans|title }}
-                </a>
+        <div class="box box-solid">
+            <div class="box-header">
+                <h3>{{ "product list"|trans|title }}</h3>
+                <div class="box-tools">
+                    <a href="{{ path('admin_category_new') }}" class="btn btn-link btn-sm">
+                        <i class="fa fa-plus"></i> {{ "new"|trans|title }}
+                    </a>
+                </div>
+            </div>
+
+            <div class="box-body">
+
+                <table class="records_list table table-condensed">
+                    <thead>
+                    <tr>
+                        <th>{{ "Id"|trans }}</th>
+                        <th>{{ "Name"|trans }}</th>
+                        <th>{{ "Slug"|trans }}</th>
+                        <th>{{ "Lft"|trans }}</th>
+                        <th>{{ "Rgt"|trans }}</th>
+                        <th>{{ "Lvl"|trans }}</th>
+                        <th>{{ "Root"|trans }}</th>
+                        <th>{{ "Actions"|trans }}</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for entity in entities %}
+                        <tr>
+                            <td><a href="{{ path('admin_category_show', { 'id': entity.id }) }}">{{ entity.id }}</a>
+                            </td>
+                            <td>{{ entity.name }}</td>
+                            <td>{{ entity.slug }}</td>
+                            <td>{{ entity.lft }}</td>
+                            <td>{{ entity.rgt }}</td>
+                            <td>{{ entity.lvl }}</td>
+                            <td>{{ entity.root }}</td>
+                            <td>
+                                <ul class="list-inline">
+                                    <li>
+                                        <a href="{{ path('admin_category_show', { 'id': entity.id }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('admin_category_edit', { 'id': entity.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
+    </section>
 
-        <div class="box-body">
-
-    <table class="records_list table table-condensed">
-        <thead>
-            <tr>
-                <th>{{ "Id"|trans }}</th>
-                <th>{{ "Name"|trans }}</th>
-                <th>{{ "Slug"|trans }}</th>
-                <th>{{ "Lft"|trans }}</th>
-                <th>{{ "Rgt"|trans }}</th>
-                <th>{{ "Lvl"|trans }}</th>
-                <th>{{ "Root"|trans }}</th>
-                <th>{{ "Actions"|trans }}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('admin_category_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
-                <td>{{ entity.slug }}</td>
-                <td>{{ entity.lft }}</td>
-                <td>{{ entity.rgt }}</td>
-                <td>{{ entity.lvl }}</td>
-                <td>{{ entity.root }}</td>
-                <td>
-                    <ul class="list-inline">
-                        <li>
-                            <a href="{{ path('admin_category_show', { 'id': entity.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('admin_category_edit', { 'id': entity.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
-    </div>
-</section>
-
-    {% endblock %}
+{% endblock %}

@@ -1,52 +1,67 @@
 {% extends 'FlowcodeDashboardBundle:Default:layout.html.twig' %}
 
-{% block body -%}
-    <h1>Collection</h1>
+{% block body %}
+    {{ include('FlowcodeClassificationBundle:Collection:collectionHeader.html.twig') }}
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ entity.name }}</td>
-            </tr>
-            <tr>
-                <th>Slug</th>
-                <td>{{ entity.slug }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>Created</th>
-                <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Updated</th>
-                <td>{{ entity.updated|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Enabled</th>
-                <td>{{ entity.enabled }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <section class="content">
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('admin_collection') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('admin_collection_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+        <div class="box box-solid">
+
+            <div class="box-header">
+                <h3>
+                    {{ entity.name }}
+                </h3>
+                <div class="box-tools">
+                    <a href="{{ path('admin_collection_new') }}" class="btn btn-link btn-sm">
+                        <i class="fa fa-plus"></i> {{ "new"|trans|title }}
+                    </a>
+
+                    <a href="{{ path('admin_collection') }}" class="btn btn-link btn-sm">
+                        <i class="fa fa-plus"></i> {{ "back"|trans|title }}
+                    </a>
+                    <a href="{{ path('admin_collection_edit', { 'id': entity.id }) }}" class="btn btn-link btn-sm">
+                        <i class="fa fa-plus"></i> {{ "edit"|trans|title }}
+                    </a>
+                    {{ form(delete_form) }}
+                </div>
+            </div>
+
+            <div class="box-body">
+
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ entity.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Slug</th>
+                        <td>{{ entity.slug }}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{ entity.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Created</th>
+                        <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Updated</th>
+                        <td>{{ entity.updated|date('Y-m-d H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Enabled</th>
+                        <td>{{ entity.enabled }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </section>
 {% endblock %}

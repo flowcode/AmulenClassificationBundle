@@ -2,13 +2,14 @@
 
 namespace Flowcode\ClassificationBundle\Form;
 
+use Amulen\ClassificationBundle\Entity\Collection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CollectionType extends AbstractType
 {
-        /**
+    /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
@@ -16,12 +17,8 @@ class CollectionType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('slug')
             ->add('description')
-            ->add('created')
-            ->add('updated')
-            ->add('enabled')
-        ;
+            ->add('enabled');
     }
 
     /**
@@ -30,7 +27,7 @@ class CollectionType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Amulen\ClassificationBundle\Entity\Collection'
+            'data_class' => Collection::class
         ));
     }
 

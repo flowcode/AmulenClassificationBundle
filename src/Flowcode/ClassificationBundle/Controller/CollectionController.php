@@ -2,13 +2,12 @@
 
 namespace Flowcode\ClassificationBundle\Controller;
 
+use Amulen\ClassificationBundle\Entity\Collection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Flowcode\ClassificationBundle\Entity\Collection;
-use Flowcode\ClassificationBundle\Form\CollectionType;
 
 /**
  * Collection controller.
@@ -29,12 +28,13 @@ class CollectionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('FlowcodeClassificationBundle:Collection')->findAll();
+        $entities = $em->getRepository(Collection::class)->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
+
     /**
      * Creates a new Collection entity.
      *
@@ -58,20 +58,20 @@ class CollectionController extends Controller
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
     /**
-    * Creates a form to create a Collection entity.
-    *
-    * @param Collection $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to create a Collection entity.
+     *
+     * @param Collection $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createCreateForm(Collection $entity)
     {
-        $form = $this->createForm(new CollectionType(), $entity, array(
+        $form = $this->createForm($this->get('amulen.classification.form.collection'), $entity, array(
             'action' => $this->generateUrl('admin_collection_create'),
             'method' => 'POST',
         ));
@@ -91,11 +91,11 @@ class CollectionController extends Controller
     public function newAction()
     {
         $entity = new Collection();
-        $form   = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity);
 
         return array(
             'entity' => $entity,
-            'form'   => $form->createView(),
+            'form' => $form->createView(),
         );
     }
 
@@ -110,7 +110,7 @@ class CollectionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Collection')->find($id);
+        $entity = $em->getRepository(Collection::class)->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Collection entity.');
@@ -119,7 +119,7 @@ class CollectionController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
+            'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
         );
     }
@@ -135,7 +135,7 @@ class CollectionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Collection')->find($id);
+        $entity = $em->getRepository(Collection::class)->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Collection entity.');
@@ -145,22 +145,22 @@ class CollectionController extends Controller
         $deleteForm = $this->createDeleteForm($id);
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
 
     /**
-    * Creates a form to edit a Collection entity.
-    *
-    * @param Collection $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to edit a Collection entity.
+     *
+     * @param Collection $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createEditForm(Collection $entity)
     {
-        $form = $this->createForm(new CollectionType(), $entity, array(
+        $form = $this->createForm($this->get('amulen.classification.form.collection'), $entity, array(
             'action' => $this->generateUrl('admin_collection_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -169,6 +169,7 @@ class CollectionController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Collection entity.
      *
@@ -180,7 +181,7 @@ class CollectionController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('FlowcodeClassificationBundle:Collection')->find($id);
+        $entity = $em->getRepository(Collection::class)->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Collection entity.');
@@ -193,15 +194,16 @@ class CollectionController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_collection_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_collection_show', array('id' => $id)));
         }
 
         return array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'entity' => $entity,
+            'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         );
     }
+
     /**
      * Deletes a Collection entity.
      *
@@ -215,7 +217,7 @@ class CollectionController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('FlowcodeClassificationBundle:Collection')->find($id);
+            $entity = $em->getRepository(Collection::class)->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find Collection entity.');
@@ -241,7 +243,6 @@ class CollectionController extends Controller
             ->setAction($this->generateUrl('admin_collection_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

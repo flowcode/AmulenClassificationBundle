@@ -5,6 +5,11 @@ services:
         tags:
             - { name: form.type, alias: amulen_classificationbundle_category }
 
+    amulen.classification.form.collection:
+        class: Flowcode\ClassificationBundle\Form\CollectionType
+        tags:
+            - { name: form.type, alias: amulen_classificationbundle_collection }
+
     amulen.classification.form.tag:
         class: Flowcode\ClassificationBundle\Form\TagType
         tags:
