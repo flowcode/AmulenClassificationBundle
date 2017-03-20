@@ -18,6 +18,6 @@
         "knplabs/knp-paginator-bundle": "~2.4",
         "components/jquery": "1.11.1",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
-        "yavin/symfony-form-tree": "~1.0"
+        "yavin/symfony-form-tree": "~0.4"
     }
 }
