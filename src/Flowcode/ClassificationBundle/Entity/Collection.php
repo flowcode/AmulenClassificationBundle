@@ -67,11 +67,19 @@ class Collection
     protected $enabled;
 
     /**
+     * @var integer
+     * @ORM\Column(name="position", type="integer")
+     */
+    protected $position;
+
+
+    /**
      * Collection constructor.
      */
     public function __construct()
     {
         $this->enabled = true;
+        $this->position = 1;
     }
 
 
@@ -227,5 +235,22 @@ class Collection
     {
         return $this->name;
     }
+
+    /**
+     * @return int
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @param int $position
+     */
+    public function setPosition(int $position)
+    {
+        $this->position = $position;
+    }
+
 
 }

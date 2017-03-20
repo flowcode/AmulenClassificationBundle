@@ -18,6 +18,7 @@ class CollectionType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
+            ->add('position')
             ->add('enabled');
     }
 

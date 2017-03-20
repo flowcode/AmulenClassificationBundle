@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class CollectionRepository extends EntityRepository
 {
+
+    public function findEnabled($order = 'ASC')
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->where('c.enabled = 1');
+        $qb->orderBy('c.position', $order);
+
+        return $qb->getQuery()->getResult();
+    }
+
 }
